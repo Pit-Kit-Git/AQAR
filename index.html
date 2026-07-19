@@ -1,268 +1,897 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AQAR Lab — Air Quality and Aerosol Research | Dept. of Earth Sciences, IISER Kolkata</title>
-<meta name="description" content="AQAR Lab studies air pollution and aerosols across indoor, outdoor, and subway environments, and their health and ecological risks. Department of Earth Sciences, IISER Kolkata. Led by Dr. Debananda Roy.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQAR Lab | Air Quality &amp; Aerosol Management Laboratory</title>
+    <meta name="description" content="AQAR Lab (Air Quality and Aerosol Management Lab) — advancing atmospheric aerosol science and air quality management through research, monitoring, and modelling.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome icons (requires internet) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="bg-blobs" aria-hidden="true">
-  <span class="blob b1"></span>
-  <span class="blob b2"></span>
-  <span class="blob b3"></span>
-  <span class="blob b4"></span>
-</div>
-<div class="grain" aria-hidden="true"></div>
+    <!-- ====== LIQUID BACKGROUND ====== -->
+    <div class="liquid-bg" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+        <div class="grid-overlay"></div>
+        <div class="noise-overlay"></div>
+    </div>
 
-<nav id="nav" class="glass">
-  <div class="nav-inner">
-    <a href="#top" class="brand">
-      <span class="brand-mark">AQ</span>
-      <span class="brand-name">AQAR Lab</span>
-    </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#research">Research</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#team">Team</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#contact" class="nav-cta">Contact</a></li>
-    </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
+    <!-- ====== NAVIGATION ====== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-wind"></i></div>
+                <div class="logo-text">
+                    <span class="logo-main">AQAR</span>
+                    <span class="logo-sub">LAB</span>
+                </div>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#research" class="nav-link">Research</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="#publications" class="nav-link">Publications</a></li>
+                <li><a href="#facilities" class="nav-link">Facilities</a></li>
+                <li><a href="#news" class="nav-link">News</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====== HERO ====== -->
+    <section class="hero" id="home">
+        <div class="hero-particles" id="particles" aria-hidden="true"></div>
+
+        <div class="hero-content">
+            <!-- Left text -->
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <i class="fas fa-circle"></i>
+                    Now Recruiting &middot; Est. 2025
+                </div>
+                <h1 class="hero-title">
+                    <span class="line-1">Air Quality &amp;</span>
+                    <span class="line-2">Aerosol</span>
+                    <span class="line-3">Management Laboratory</span>
+                </h1>
+                <p class="hero-description">
+                    Advancing scientific understanding of atmospheric aerosols and air
+                    pollution. We develop innovative solutions for cleaner air and a
+                    healthier environment through cutting-edge research, monitoring,
+                    and technology.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#research" class="btn btn-primary">
+                        <i class="fas fa-flask"></i> Explore Research
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-envelope"></i> Join Our Lab
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">2025</div>
+                        <div class="stat-label">Lab Established</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="13" data-suffix="">0</div>
+                        <div class="stat-label">Active Research Areas</div>
+                    </div>
+                    <!-- TODO: replace [PI_PUB_COUNT] with the PI's actual publication count -->
+                    <div class="stat-item">
+                        <div class="stat-number">[PI_PUB_COUNT]+</div>
+                        <div class="stat-label">PI's Publications</div>
+                    </div>
+                    <!-- TODO: replace [TEAM_SIZE] with the current number of lab members -->
+                    <div class="stat-item">
+                        <div class="stat-number">[TEAM_SIZE]</div>
+                        <div class="stat-label">Current Team Size</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right visual -->
+            <div class="hero-visual">
+                <div class="hero-card-main glass-sheen">
+                    <div class="highlights-header">Research Highlights</div>
+                    <div class="highlights-grid">
+                        <!-- TODO: replace [PI_PUB_COUNT] with the PI's actual publication count -->
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fas fa-book"></i></div>
+                            <div class="highlight-number">[PI_PUB_COUNT]+</div>
+                            <div class="highlight-label">PI's Peer-Reviewed Publications</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fas fa-building-columns"></i></div>
+                            <div class="highlight-number">Seed</div>
+                            <div class="highlight-label">Institutional Funding ([University Name])</div>
+                        </div>
+                        <!-- TODO: replace [TEAM_SIZE] with the current number of lab members -->
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fas fa-users"></i></div>
+                            <div class="highlight-number">[TEAM_SIZE]</div>
+                            <div class="highlight-label">Lab Members</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fas fa-diagram-project"></i></div>
+                            <div class="highlight-number">13</div>
+                            <div class="highlight-label">Active Research Areas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="floating-card floating-card-1">
+                    <div class="fc-icon green"><i class="fas fa-calendar-check"></i></div>
+                    <div class="fc-text">
+                        <div class="fc-title">Established</div>
+                        <div class="fc-value">2025</div>
+                    </div>
+                </div>
+                <div class="floating-card floating-card-2">
+                    <div class="fc-icon blue"><i class="fas fa-flask"></i></div>
+                    <div class="fc-text">
+                        <div class="fc-title">Now Recruiting</div>
+                        <div class="fc-value">New Session</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== ABOUT ====== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <!-- Left visual -->
+                <div class="about-image-wrap reveal-left">
+                    <div class="about-image-box">
+                        <div class="about-icon-grid">
+                            <div class="about-icon-item"><i class="fas fa-wind"></i><span>Aerosol Studies</span></div>
+                            <div class="about-icon-item"><i class="fas fa-smog"></i><span>Air Quality</span></div>
+                            <div class="about-icon-item"><i class="fas fa-satellite-dish"></i><span>Remote Sensing</span></div>
+                            <div class="about-icon-item"><i class="fas fa-chart-line"></i><span>Data Analysis</span></div>
+                        </div>
+                    </div>
+                    <div class="about-badge-float">
+                        <div class="badge-num">Est. 2025</div>
+                        <div class="badge-text">New Lab, Growing Fast</div>
+                    </div>
+                </div>
+
+                <!-- Right content -->
+                <div class="about-content reveal-right">
+                    <div class="section-tag">About Our Lab</div>
+                    <h2 class="section-title">Pioneering <span>Air Quality</span> Science</h2>
+                    <div class="section-divider" style="margin-left:0;"></div>
+                    <p>
+                        The Air Quality and Aerosol Management (AQAR) Laboratory is dedicated to
+                        understanding the physical, chemical, and optical properties of atmospheric
+                        aerosols and their impact on human health and climate.
+                    </p>
+                    <p>
+                        Founded with a mission to bridge the gap between fundamental aerosol science
+                        and real-world air quality management, our lab conducts innovative research
+                        that directly informs environmental policy and public health decisions.
+                    </p>
+
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-microscope"></i></div>
+                            <div class="feature-text">
+                                <h4>State-of-the-Art Instrumentation</h4>
+                                <p>Advanced instruments for aerosol characterization and real-time monitoring</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-globe-asia"></i></div>
+                            <div class="feature-text">
+                                <h4>Field Measurement Campaigns</h4>
+                                <p>Measurements across diverse environments, from urban to remote areas</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                            <div class="feature-text">
+                                <h4>Computational Modeling</h4>
+                                <p>Advanced models for air quality prediction and policy support</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#research" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i> View Our Research
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== RESEARCH ====== -->
+    <section class="research" id="research">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">What We Study</div>
+                <h2 class="section-title">Research <span>Focus Areas</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    Active research directions across monitoring, characterization,
+                    exposure modelling, and emerging pollutants
+                </p>
+            </div>
+
+            <div class="research-grid">
+                <div class="research-card reveal" data-delay="0">
+                    <div class="research-card-icon rc-icon-1"><i class="fas fa-wind"></i></div>
+                    <h3>Air Quality Monitoring</h3>
+                    <p>Indoor and outdoor/atmospheric air quality monitoring to characterize pollutant levels across micro-environments.</p>
+                    <div class="research-tags"><span class="research-tag">Indoor Air</span><span class="research-tag">Ambient Monitoring</span></div>
+                </div>
+                <div class="research-card reveal" data-delay="100">
+                    <div class="research-card-icon rc-icon-2"><i class="fas fa-train-subway"></i></div>
+                    <h3>Subway Air Quality &amp; Human Health</h3>
+                    <p>Air quality in subway/metro transportation micro-environments and its implications for commuter and worker health.</p>
+                    <div class="research-tags"><span class="research-tag">Metro Transit</span><span class="research-tag">Commuter Exposure</span></div>
+                </div>
+                <div class="research-card reveal" data-delay="200">
+                    <div class="research-card-icon rc-icon-3"><i class="fas fa-microscope"></i></div>
+                    <h3>Particulate Matter Characterization</h3>
+                    <p>Physical and chemical characterization of PM10 and PM2.5, including size distribution, composition, and morphology.</p>
+                    <div class="research-tags"><span class="research-tag">PM2.5</span><span class="research-tag">PM10</span></div>
+                </div>
+                <div class="research-card reveal" data-delay="0">
+                    <div class="research-card-icon rc-icon-4"><i class="fas fa-vial-circle-check"></i></div>
+                    <h3>Emerging Air Pollutants</h3>
+                    <p>Investigating microplastics and black carbon as emerging airborne contaminants and their atmospheric behaviour.</p>
+                    <div class="research-tags"><span class="research-tag">Microplastics</span><span class="research-tag">Black Carbon</span></div>
+                </div>
+                <div class="research-card reveal" data-delay="100">
+                    <div class="research-card-icon rc-icon-5"><i class="fas fa-lungs"></i></div>
+                    <h3>Human Health Risk Modelling</h3>
+                    <p>HRT (human respiratory tract) mass deposition and exposure pathway modelling for cancer and non-cancer risk assessment.</p>
+                    <div class="research-tags"><span class="research-tag">HRT Model</span><span class="research-tag">Risk Assessment</span></div>
+                </div>
+                <div class="research-card reveal" data-delay="200">
+                    <div class="research-card-icon rc-icon-6"><i class="fas fa-bacteria"></i></div>
+                    <h3>Bioaerosol Research</h3>
+                    <p>Bioaerosols in indoor and subway micro-environments, assessed through Quantitative Microbial Risk Assessment (QMRA).</p>
+                    <div class="research-tags"><span class="research-tag">Bioaerosols</span><span class="research-tag">QMRA</span></div>
+                </div>
+                <div class="research-card reveal" data-delay="0">
+                    <div class="research-card-icon rc-icon-1"><i class="fas fa-volcano"></i></div>
+                    <h3>Natural &amp; Anthropogenic Sources</h3>
+                    <p>Distinguishing natural and human-driven pollution sources and evaluating their respective impacts on human health.</p>
+                    <div class="research-tags"><span class="research-tag">Source Types</span><span class="research-tag">Health Impact</span></div>
+                </div>
+                <div class="research-card reveal" data-delay="100">
+                    <div class="research-card-icon rc-icon-2"><i class="fas fa-diagram-project"></i></div>
+                    <h3>Air Pollution Modelling</h3>
+                    <p>Source-based and receptor-based air pollution modelling to link emissions with observed ambient concentrations.</p>
+                    <div class="research-tags"><span class="research-tag">Source Modelling</span><span class="research-tag">Receptor Modelling</span></div>
+                </div>
+                <div class="research-card reveal" data-delay="200">
+                    <div class="research-card-icon rc-icon-3"><i class="fas fa-earth-asia"></i></div>
+                    <h3>Transboundary Pollution</h3>
+                    <p>Tracing transboundary sources of air pollution and their environmental and human health risks across regions.</p>
+                    <div class="research-tags"><span class="research-tag">Long-range Transport</span><span class="research-tag">Regional Risk</span></div>
+                </div>
+                <div class="research-card reveal" data-delay="0">
+                    <div class="research-card-icon rc-icon-4"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Source Apportionment</h3>
+                    <p>Identifying and quantifying contributions of emission sources to ambient particulate matter using receptor modelling.</p>
+                    <div class="research-tags"><span class="research-tag">PMF</span><span class="research-tag">Receptor Modelling</span></div>
+                </div>
+                <div class="research-card reveal" data-delay="100">
+                    <div class="research-card-icon rc-icon-5"><i class="fas fa-clipboard-list"></i></div>
+                    <h3>Emission Inventory</h3>
+                    <p>Compiling and quantifying pollutant emission inventories across source categories to support air quality management.</p>
+                    <div class="research-tags"><span class="research-tag">Emission Inventory</span><span class="research-tag">Source Data</span></div>
+                </div>
+                <div class="research-card reveal" data-delay="200">
+                    <div class="research-card-icon rc-icon-6"><i class="fas fa-flask"></i></div>
+                    <h3>Microplastics &amp; Toxic Metal Interactions</h3>
+                    <p>Studying how microplastics interact with toxic metals in the environment, and the combined risks this poses.</p>
+                    <div class="research-tags"><span class="research-tag">Microplastics</span><span class="research-tag">Toxic Metals</span></div>
+                </div>
+                <div class="research-card reveal" data-delay="0">
+                    <div class="research-card-icon rc-icon-1"><i class="fas fa-seedling"></i></div>
+                    <h3>Biochar: Production &amp; Application</h3>
+                    <p>Producing and applying biochar from agricultural, forest, and campus waste as a sustainable waste management strategy.</p>
+                    <div class="research-tags"><span class="research-tag">Biochar</span><span class="research-tag">Waste Valorisation</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== TEAM ====== -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Our People</div>
+                <h2 class="section-title">Meet the <span>Team</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    A diverse group of scientists, engineers, and students committed to
+                    advancing air quality science
+                </p>
+            </div>
+
+            <!-- Principal Investigator -->
+            <div class="pi-card glass-sheen reveal">
+                <div class="pi-avatar">
+                    <i class="fas fa-user-tie"></i>
+                    <span class="pi-badge">PI</span>
+                </div>
+                <div class="pi-info">
+                    <div class="pi-label">Principal Investigator</div>
+                    <!-- TODO: replace with the PI's actual details -->
+                    <h2 class="pi-name">Dr. [PI Name]</h2>
+                    <p class="pi-title">
+                        Professor of [Department] &nbsp;|&nbsp; [University Name]
+                    </p>
+                    <p class="pi-bio">
+                        [PI Name] leads the AQAR Lab with extensive experience in aerosol science
+                        and air quality research. Their work focuses on understanding fine
+                        particulate matter formation, transport, and health effects, backed by
+                        peer-reviewed publications and funded research grants.
+                    </p>
+                    <div class="pi-links">
+                        <a href="#" class="pi-link"><i class="fas fa-envelope"></i> Email</a>
+                        <a href="#" class="pi-link"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+                        <a href="#" class="pi-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="#" class="pi-link"><i class="fas fa-university"></i> University Profile</a>
+                        <a href="#" class="pi-link"><i class="fab fa-researchgate"></i> ResearchGate</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PhD Students -->
+            <div class="team-section-title reveal">PhD Students</div>
+            <div class="team-grid">
+                <div class="member-card reveal" data-delay="0">
+                    <div class="member-avatar"><i class="fas fa-user"></i></div>
+                    <h3 class="member-name">Student Name</h3>
+                    <p class="member-role">PhD Researcher</p>
+                    <p class="member-field">Aerosol optical properties &amp; remote sensing</p>
+                    <div class="member-socials">
+                        <a href="#" class="social-btn"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="social-btn"><i class="fas fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+                <div class="member-card reveal" data-delay="100">
+                    <div class="member-avatar"><i class="fas fa-user"></i></div>
+                    <h3 class="member-name">Student Name</h3>
+                    <p class="member-role">PhD Researcher</p>
+                    <p class="member-field">Source apportionment &amp; chemical transport</p>
+                    <div class="member-socials">
+                        <a href="#" class="social-btn"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="social-btn"><i class="fas fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+                <div class="member-card reveal" data-delay="200">
+                    <div class="member-avatar"><i class="fas fa-user"></i></div>
+                    <h3 class="member-name">Student Name</h3>
+                    <p class="member-role">PhD Researcher</p>
+                    <p class="member-field">Urban air quality monitoring</p>
+                    <div class="member-socials">
+                        <a href="#" class="social-btn"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="social-btn"><i class="fas fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+                <div class="member-card reveal" data-delay="300">
+                    <div class="member-avatar"><i class="fas fa-user"></i></div>
+                    <h3 class="member-name">Student Name</h3>
+                    <p class="member-role">PhD Researcher</p>
+                    <p class="member-field">Secondary organic aerosol formation</p>
+                    <div class="member-socials">
+                        <a href="#" class="social-btn"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="social-btn"><i class="fas fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Master's Students -->
+            <div class="team-section-title reveal">Master's Students</div>
+            <div class="team-grid">
+                <div class="member-card reveal" data-delay="0">
+                    <div class="member-avatar"><i class="fas fa-user"></i></div>
+                    <h3 class="member-name">Student Name</h3>
+                    <p class="member-role">M.S. Student</p>
+                    <p class="member-field">PM2.5 health impact analysis</p>
+                    <div class="member-socials">
+                        <a href="#" class="social-btn"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-card reveal" data-delay="100">
+                    <div class="member-avatar"><i class="fas fa-user"></i></div>
+                    <h3 class="member-name">Student Name</h3>
+                    <p class="member-role">M.S. Student</p>
+                    <p class="member-field">Atmospheric dispersion modeling</p>
+                    <div class="member-socials">
+                        <a href="#" class="social-btn"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-card reveal" data-delay="200">
+                    <div class="member-avatar"><i class="fas fa-user"></i></div>
+                    <h3 class="member-name">Student Name</h3>
+                    <p class="member-role">M.S. Student</p>
+                    <p class="member-field">Indoor air quality assessment</p>
+                    <div class="member-socials">
+                        <a href="#" class="social-btn"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="member-card reveal" data-delay="300">
+                    <div class="member-avatar"><i class="fas fa-user"></i></div>
+                    <h3 class="member-name">Student Name</h3>
+                    <p class="member-role">M.S. Student</p>
+                    <p class="member-field">Low-cost sensor calibration</p>
+                    <div class="member-socials">
+                        <a href="#" class="social-btn"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== PUBLICATIONS ====== -->
+    <section class="publications" id="publications">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Our Work</div>
+                <h2 class="section-title">Recent <span>Publications</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Peer-reviewed research advancing the field of aerosol science</p>
+            </div>
+
+            <div class="pub-filter reveal">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="journal">Journal Articles</button>
+                <button class="filter-btn" data-filter="conference">Conference Papers</button>
+            </div>
+
+            <div class="pub-list">
+                <div class="pub-item reveal" data-type="journal">
+                    <span class="pub-year">2026</span>
+                    <div class="pub-info">
+                        <div class="pub-title">
+                            Characterization of Fine Particulate Matter Sources in Urban Environments
+                            Using Positive Matrix Factorization
+                            <span class="pub-type-badge badge-journal">Journal</span>
+                        </div>
+                        <div class="pub-authors">Author A, Author B, Author C, <strong>[PI Name]</strong></div>
+                        <div class="pub-journal">Atmospheric Environment, Vol. 312, pp. 120045</div>
+                    </div>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link-btn"><i class="fas fa-external-link-alt"></i> DOI</a>
+                        <a href="#" class="pub-link-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+                    </div>
+                </div>
+
+                <div class="pub-item reveal" data-type="journal">
+                    <span class="pub-year">2026</span>
+                    <div class="pub-info">
+                        <div class="pub-title">
+                            Seasonal Variation of Aerosol Optical Properties and Their Relation
+                            to Air Mass Origins
+                            <span class="pub-type-badge badge-journal">Journal</span>
+                        </div>
+                        <div class="pub-authors">Author B, <strong>[PI Name]</strong>, Author D</div>
+                        <div class="pub-journal">Science of the Total Environment, Vol. 918, pp. 170678</div>
+                    </div>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link-btn"><i class="fas fa-external-link-alt"></i> DOI</a>
+                        <a href="#" class="pub-link-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+                    </div>
+                </div>
+
+                <div class="pub-item reveal" data-type="conference">
+                    <span class="pub-year">2025</span>
+                    <div class="pub-info">
+                        <div class="pub-title">
+                            Real-time Monitoring of Indoor Air Quality Using Low-Cost Sensors:
+                            Calibration and Validation
+                            <span class="pub-type-badge badge-conference">Conference</span>
+                        </div>
+                        <div class="pub-authors"><strong>[PI Name]</strong>, Author C, Author E</div>
+                        <div class="pub-journal">AAAR Annual Conference 2025, Portland, OR</div>
+                    </div>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link-btn"><i class="fas fa-external-link-alt"></i> Abstract</a>
+                    </div>
+                </div>
+
+                <div class="pub-item reveal" data-type="journal">
+                    <span class="pub-year">2025</span>
+                    <div class="pub-info">
+                        <div class="pub-title">
+                            Secondary Organic Aerosol Formation from Biomass Burning Emissions
+                            <span class="pub-type-badge badge-journal">Journal</span>
+                        </div>
+                        <div class="pub-authors">Author F, <strong>[PI Name]</strong>, Author G, Author H</div>
+                        <div class="pub-journal">Environmental Science &amp; Technology, Vol. 57, pp. 9234&ndash;9245</div>
+                    </div>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link-btn"><i class="fas fa-external-link-alt"></i> DOI</a>
+                        <a href="#" class="pub-link-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+                    </div>
+                </div>
+
+                <div class="pub-item reveal" data-type="conference">
+                    <span class="pub-year">2025</span>
+                    <div class="pub-info">
+                        <div class="pub-title">
+                            Long-range Transport of Dust Aerosols and Its Impact on Regional Air Quality
+                            <span class="pub-type-badge badge-conference">Conference</span>
+                        </div>
+                        <div class="pub-authors">Author I, Author J, <strong>[PI Name]</strong></div>
+                        <div class="pub-journal">AGU Fall Meeting 2025, San Francisco, CA</div>
+                    </div>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link-btn"><i class="fas fa-external-link-alt"></i> Abstract</a>
+                    </div>
+                </div>
+
+                <div class="pub-item reveal" data-type="journal">
+                    <span class="pub-year">2024</span>
+                    <div class="pub-info">
+                        <div class="pub-title">
+                            Long-term Trends in Urban Particulate Matter and Associated Health Burden
+                            <span class="pub-type-badge badge-journal">Journal</span>
+                        </div>
+                        <div class="pub-authors"><strong>[PI Name]</strong>, Author I, Author J</div>
+                        <div class="pub-journal">npj Climate and Atmospheric Science, Vol. 5, Article 88</div>
+                    </div>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link-btn"><i class="fas fa-external-link-alt"></i> DOI</a>
+                        <a href="#" class="pub-link-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub-load-more reveal">
+                <a href="#" class="btn btn-outline"><i class="fas fa-book"></i> View All Publications</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FACILITIES ====== -->
+    <section class="facilities" id="facilities">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Infrastructure</div>
+                <h2 class="section-title">Lab <span>Facilities</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Equipped with cutting-edge instruments and computational resources</p>
+            </div>
+
+            <div class="facilities-grid">
+                <div class="facility-card glass-sheen reveal" data-delay="0">
+                    <div class="facility-img"><i class="fas fa-filter"></i></div>
+                    <div class="facility-body">
+                        <h3>Aerosol Sampling Systems</h3>
+                        <p>High-volume and low-volume samplers for PM2.5, PM10, and ultrafine particle collection with cascade impactors.</p>
+                        <div class="facility-specs">
+                            <span class="spec-tag">Hi-Vol Sampler</span><span class="spec-tag">MOUDI</span><span class="spec-tag">PM2.5 FRM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="facility-card glass-sheen reveal" data-delay="100">
+                    <div class="facility-img"><i class="fas fa-wave-square"></i></div>
+                    <div class="facility-body">
+                        <h3>Online Monitoring Instruments</h3>
+                        <p>Real-time measurement of particle number, mass concentration, chemical composition, and optical properties.</p>
+                        <div class="facility-specs">
+                            <span class="spec-tag">APS</span><span class="spec-tag">SMPS</span><span class="spec-tag">Aethalometer</span><span class="spec-tag">Nephelometer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="facility-card glass-sheen reveal" data-delay="200">
+                    <div class="facility-img"><i class="fas fa-vial"></i></div>
+                    <div class="facility-body">
+                        <h3>Chemical Analysis Lab</h3>
+                        <p>Ion chromatography, ICP-MS, and organic carbon/elemental carbon analysis for aerosol composition studies.</p>
+                        <div class="facility-specs">
+                            <span class="spec-tag">IC</span><span class="spec-tag">ICP-MS</span><span class="spec-tag">OC/EC Analyzer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="facility-card glass-sheen reveal" data-delay="0">
+                    <div class="facility-img"><i class="fas fa-server"></i></div>
+                    <div class="facility-body">
+                        <h3>High-Performance Computing</h3>
+                        <p>Dedicated computing cluster for WRF-Chem, CMAQ, and machine learning model simulations.</p>
+                        <div class="facility-specs">
+                            <span class="spec-tag">WRF-Chem</span><span class="spec-tag">CMAQ</span><span class="spec-tag">Python / R</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="facility-card glass-sheen reveal" data-delay="100">
+                    <div class="facility-img"><i class="fas fa-broadcast-tower"></i></div>
+                    <div class="facility-body">
+                        <h3>Field Monitoring Stations</h3>
+                        <p>Established monitoring sites in urban, suburban, and rural areas for long-term ambient measurements.</p>
+                        <div class="facility-specs">
+                            <span class="spec-tag">Urban Site</span><span class="spec-tag">Rural Site</span><span class="spec-tag">Rooftop Station</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="facility-card glass-sheen reveal" data-delay="200">
+                    <div class="facility-img"><i class="fas fa-microscope"></i></div>
+                    <div class="facility-body">
+                        <h3>Microscopy &amp; Imaging</h3>
+                        <p>SEM-EDX and TEM for single-particle morphology and elemental composition analysis.</p>
+                        <div class="facility-specs">
+                            <span class="spec-tag">SEM-EDX</span><span class="spec-tag">TEM</span><span class="spec-tag">Single-Particle</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== NEWS ====== -->
+    <section class="news" id="news">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Updates</div>
+                <h2 class="section-title">News &amp; <span>Announcements</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Stay up to date with our latest achievements, events, and opportunities</p>
+            </div>
+
+            <div class="news-grid">
+                <div class="news-card glass-sheen reveal" data-delay="0">
+                    <div class="news-img">
+                        <i class="fas fa-bullhorn"></i>
+                        <span class="news-category">OPENING</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date"><i class="fas fa-calendar"></i> July 2026</div>
+                        <h3 class="news-title">Recruiting for the New Academic Session</h3>
+                        <p class="news-excerpt">
+                            The AQAR Lab is recruiting motivated PhD, MS, and BS-MS thesis
+                            students for the upcoming academic session. See Contact for details.
+                        </p>
+                        <a href="#contact" class="news-read-more">Apply Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="news-card glass-sheen reveal" data-delay="100">
+                    <div class="news-img">
+                        <i class="fas fa-flask"></i>
+                        <span class="news-category">RESEARCH</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date"><i class="fas fa-calendar"></i> 2025&ndash;2026</div>
+                        <h3 class="news-title">Lab Setup Underway Across 13 Research Areas</h3>
+                        <p class="news-excerpt">
+                            Since founding, the lab has been establishing protocols and
+                            instrumentation across its research areas, from PM characterization
+                            to bioaerosol and microplastics work.
+                        </p>
+                        <a href="#research" class="news-read-more">See Research <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="news-card glass-sheen reveal" data-delay="200">
+                    <div class="news-img">
+                        <i class="fas fa-seedling"></i>
+                        <span class="news-category">PROJECT</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date"><i class="fas fa-calendar"></i> 2025&ndash;2026</div>
+                        <h3 class="news-title">Biochar Waste-Valorisation Work Begins</h3>
+                        <p class="news-excerpt">
+                            The lab has started work on producing and applying biochar from
+                            agricultural, forest, and campus waste as a sustainable waste
+                            management strategy.
+                        </p>
+                        <a href="#research" class="news-read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="news-card glass-sheen reveal" data-delay="0">
+                    <div class="news-img">
+                        <i class="fas fa-flag"></i>
+                        <span class="news-category">MILESTONE</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date"><i class="fas fa-calendar"></i> 2025</div>
+                        <h3 class="news-title">AQAR Lab Founded at [University Name]</h3>
+                        <p class="news-excerpt">
+                            The Air Quality and Aerosol Management Lab was established in the
+                            Department of [Your Dept], [University Name].
+                        </p>
+                        <a href="#about" class="news-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTACT ====== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Get In Touch</div>
+                <h2 class="section-title">Contact <span>Us</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Interested in collaboration, joining our lab, or learning more about our research?</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Left info -->
+                <div class="contact-info reveal-left">
+                    <h3>We'd Love to Hear From You</h3>
+                    <p>
+                        Whether you're a prospective student, collaborator, or just curious
+                        about our work, don't hesitate to reach out. We're always open to new
+                        ideas and partnerships.
+                    </p>
+
+                    <div class="contact-details">
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-detail-text">
+                                <h4>Location</h4>
+                                <p>Room [XXX], [Building Name]<br>[University Name], [City, State]</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-detail-text">
+                                <h4>Email</h4>
+                                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0d616c6f2068606c64614d7863647b687f7e64797423686978">[email&#160;protected]</a><br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="52223b7f373f333b3e12273c3b243720213b262b7c373627">[email&#160;protected]</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
+                            <div class="contact-detail-text">
+                                <h4>Phone</h4>
+                                <p>+XX XXXXX XXXXX</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
+                            <div class="contact-detail-text">
+                                <h4>Office Hours</h4>
+                                <p>Monday &ndash; Friday: 9:00 AM &ndash; 5:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-socials">
+                        <a href="#" class="contact-social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="contact-social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="contact-social-link" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                        <a href="#" class="contact-social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="contact-social-link" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right form -->
+                <div class="contact-form-wrap glass-sheen reveal-right">
+                    <h3>Send a Message</h3>
+                    <form id="contact-form" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name *</label>
+                                <input type="text" placeholder="First name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name *</label>
+                                <input type="text" placeholder="Last name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Institution / Organization</label>
+                            <input type="text" placeholder="University / Company">
+                        </div>
+                        <div class="form-group">
+                            <label>Inquiry Type</label>
+                            <select>
+                                <option value="">Select inquiry type...</option>
+                                <option>Prospective PhD Student</option>
+                                <option>Prospective Master's Student</option>
+                                <option>Research Collaboration</option>
+                                <option>Postdoctoral Position</option>
+                                <option>Media / Press</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea placeholder="Tell us about your interest or inquiry..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            <span class="btn-text">Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#home" class="nav-logo footer-logo">
+                        <div class="logo-icon"><i class="fas fa-wind"></i></div>
+                        <div class="logo-text">
+                            <span class="logo-main">AQAR</span>
+                            <span class="logo-sub">LAB</span>
+                        </div>
+                    </a>
+                    <p>
+                        Air Quality &amp; Aerosol Management Laboratory — advancing the science of
+                        aerosols and air quality for a cleaner, healthier world through rigorous
+                        research, education, and innovation.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="footer-social"><i class="fab fa-researchgate"></i></a>
+                        <a href="#" class="footer-social"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <div class="footer-links">
+                        <a href="#about">About the Lab</a>
+                        <a href="#research">Research Areas</a>
+                        <a href="#team">Our Team</a>
+                        <a href="#publications">Publications</a>
+                        <a href="#news">News &amp; Updates</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <div class="footer-links">
+                        <a href="#contact">Openings / Join Us</a>
+                        <a href="#">Data &amp; Datasets</a>
+                        <a href="#">Lab Safety</a>
+                        <a href="#">Collaborators</a>
+                        <a href="#">University Site</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="year">2026</span> AQAR Lab &nbsp;&middot;&nbsp;
+                    <a href="#">[University Name]</a>
+                    &nbsp;&middot;&nbsp; All Rights Reserved
+                </p>
+                <p>Designed with <i class="fas fa-heart" style="color:#ef4444;"></i> for Science</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button class="back-top" id="back-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
     </button>
-  </div>
-</nav>
 
-<header id="top" class="hero">
-
-  <!-- Live AQI widget -->
-  <div class="aqi-widget glass" id="aqiWidget" aria-live="polite">
-    <button class="aqi-refresh" id="aqiRefresh" title="Refresh reading" aria-label="Refresh AQI reading">⟳</button>
-    <div class="aqi-head">
-      <span class="aqi-live-dot" id="aqiDot"></span>
-      <span class="aqi-label">Live AQI</span>
-    </div>
-    <div class="aqi-main">
-      <span class="aqi-value" id="aqiValue">--</span>
-      <span class="aqi-category" id="aqiCategory">Locating…</span>
-    </div>
-    <p class="aqi-location" id="aqiLocation">Detecting your location…</p>
-    <div class="aqi-pollutants" id="aqiPollutants"></div>
-    <button class="aqi-locate" id="aqiLocate" hidden>Use my location</button>
-  </div>
-
-  <div class="hero-inner">
-    <p class="eyebrow">Department of Earth Sciences · IISER Kolkata</p>
-    <h1>AQAR Lab</h1>
-    <p class="hero-kicker">Air Quality and Aerosol Research</p>
-    <p class="hero-sub">We trace how air pollutants and aerosols move through indoor rooms, subway platforms, and transboundary air masses — and translate that into measurable risk for human health and ecosystems. From dispersion modeling to bioaerosol monitoring, our work spans the full path from source to exposure.</p>
-    <div class="hero-actions">
-      <a href="#research" class="btn btn-primary">View our research</a>
-      <a href="#contact" class="btn btn-ghost">Get in touch</a>
-    </div>
-    <ul class="hero-meta">
-      <li><span>Institute</span>IISER Kolkata</li>
-      <li><span>Department</span>Earth Sciences</li>
-      <li><span>Principal Investigator</span>Dr. Debananda Roy</li>
-    </ul>
-  </div>
-</header>
-
-<main>
-
-  <!-- ============ RESEARCH AREAS ============ -->
-  <section id="research" class="section">
-    <div class="section-head">
-      <p class="eyebrow">Research</p>
-      <h2>What we work on</h2>
-      <p class="section-lede">Ten connected lines of work, from modeling how pollutants disperse to assessing what they cost human health and the environment.</p>
-    </div>
-    <div class="research-grid">
-
-      <article class="research-card glass">
-        <p class="code">APM</p>
-        <h3>Air Pollution Modeling</h3>
-        <p>Dispersion and receptor modeling of air pollutants across urban and regional scales.</p>
-      </article>
-
-      <article class="research-card glass">
-        <p class="code">AQAC</p>
-        <h3>Indoor &amp; Outdoor Air Quality</h3>
-        <p>Assessment and characterization of air quality across indoor and outdoor environments.</p>
-      </article>
-
-      <article class="research-card glass">
-        <p class="code">NTAP</p>
-        <h3>Transboundary Air Pollutants</h3>
-        <p>Natural and transboundary air pollutants and their long-range atmospheric transport.</p>
-      </article>
-
-      <article class="research-card glass">
-        <p class="code">EAP</p>
-        <h3>Emerging Air Pollutants</h3>
-        <p>Airborne microplastics and black carbon as emerging contaminants of concern.</p>
-      </article>
-
-      <article class="research-card glass">
-        <p class="code">SUBWAY</p>
-        <h3>Subway Air Quality</h3>
-        <p>Air quality in underground subway transportation systems.</p>
-      </article>
-
-      <article class="research-card glass">
-        <p class="code">HHR</p>
-        <h3>Human Health Risks</h3>
-        <p>Health risks in subway systems and indoor houses from pollutant exposure.</p>
-      </article>
-
-      <article class="research-card glass">
-        <p class="code">BIO&#8209;QMRA</p>
-        <h3>Bioaerosol Monitoring</h3>
-        <p>Bioaerosol monitoring and quantitative microbial risk assessment (probability of infection).</p>
-      </article>
-
-      <article class="research-card glass">
-        <p class="code">HRT</p>
-        <h3>Health Risk Models</h3>
-        <p>Mass deposition and exposure pathway modeling for human respiratory tracts.</p>
-      </article>
-
-      <article class="research-card glass">
-        <p class="code">ERA</p>
-        <h3>Ecological Risk Assessment</h3>
-        <p>Assessing pollutant risk to ecosystems, beyond human health impacts alone.</p>
-      </article>
-
-      <article class="research-card glass">
-        <p class="code">W2SP</p>
-        <h3>Waste to Sustainable Product</h3>
-        <p>Solid waste management pathways that convert waste into sustainable products.</p>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ============ PUBLICATIONS ============ -->
-  <section id="publications" class="section">
-    <div class="section-head">
-      <p class="eyebrow">Selected output</p>
-      <h2>Publications</h2>
-      <p class="section-lede">[Add the lab's publication list here — title, authors, and journal for each entry.]</p>
-    </div>
-    <ul class="pub-list glass">
-      <li>
-        <p class="pub-year">[Year]</p>
-        <div class="pub-body">
-          <h3>[Publication title]</h3>
-          <p class="pub-meta">[Authors] — <em>[Journal / Conference]</em></p>
-        </div>
-      </li>
-      <li>
-        <p class="pub-year">[Year]</p>
-        <div class="pub-body">
-          <h3>[Publication title]</h3>
-          <p class="pub-meta">[Authors] — <em>[Journal / Conference]</em></p>
-        </div>
-      </li>
-      <li>
-        <p class="pub-year">[Year]</p>
-        <div class="pub-body">
-          <h3>[Publication title]</h3>
-          <p class="pub-meta">[Authors] — <em>[Journal / Conference]</em></p>
-        </div>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ============ TEAM ============ -->
-  <section id="team" class="section">
-    <div class="section-head">
-      <p class="eyebrow">People</p>
-      <h2>Team</h2>
-    </div>
-    <div class="team-grid">
-
-      <article class="team-card glass pi-card">
-        <div class="team-photo" style="--hue:200;"></div>
-        <h3>Dr. Debananda Roy</h3>
-        <p class="team-role">Principal Investigator</p>
-        <p class="team-bio">Department of Earth Sciences, IISER Kolkata. Leads AQAR Lab's work across air quality modeling, aerosol characterization, and health risk assessment.</p>
-      </article>
-
-      <article class="team-card glass">
-        <div class="team-photo" style="--hue:170;"></div>
-        <h3>[Name]</h3>
-        <p class="team-role">Postdoctoral Researcher</p>
-        <p class="team-bio">[One sentence on research focus.]</p>
-      </article>
-
-      <article class="team-card glass">
-        <div class="team-photo" style="--hue:230;"></div>
-        <h3>[Name]</h3>
-        <p class="team-role">PhD Candidate</p>
-        <p class="team-bio">[One sentence on research focus.]</p>
-      </article>
-
-      <article class="team-card glass">
-        <div class="team-photo" style="--hue:20;"></div>
-        <h3>[Name]</h3>
-        <p class="team-role">PhD Candidate</p>
-        <p class="team-bio">[One sentence on research focus.]</p>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ============ NEWS ============ -->
-  <section id="news" class="section">
-    <div class="section-head">
-      <p class="eyebrow">Updates</p>
-      <h2>News</h2>
-    </div>
-    <ul class="news-list glass">
-      <li>
-        <p class="news-date">[Month Year]</p>
-        <div class="news-body">
-          <h3>[Headline]</h3>
-          <p>[One sentence of context.]</p>
-        </div>
-      </li>
-      <li>
-        <p class="news-date">[Month Year]</p>
-        <div class="news-body">
-          <h3>[Headline]</h3>
-          <p>[One sentence of context.]</p>
-        </div>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <section id="contact" class="section section-cta">
-    <div class="cta-inner glass">
-      <p class="eyebrow">Get involved</p>
-      <h2>Prospective students and collaborators, we'd like to hear from you.</h2>
-      <p class="section-lede">[Note on open positions, visiting scholar placements, or collaboration proposals.]</p>
-      <div class="hero-actions">
-        <a href="mailto:contact@aqar-iiserkol.example.edu" class="btn btn-primary">contact@aqar-iiserkol.example.edu</a>
-        <a href="#top" class="btn btn-ghost">Back to top</a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <p>AQAR Lab · Department of Earth Sciences · IISER Kolkata</p>
-  <p class="footer-fine">Live AQI data via Open‑Meteo. Publications, team, and news are placeholders — replace before publishing.</p>
-</footer>
-
-<script src="script.js"></script>
-</body>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1d88491fdd73b85',t:'MTc4NDQ1MTQzOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
