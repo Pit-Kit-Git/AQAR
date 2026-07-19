@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AQAR Lab — Air Quality and Aerosol Research | Dept. of Earth Sciences, IISER Kolkata</title>
+<meta name="description" content="AQAR Lab studies air pollution and aerosols across indoor, outdoor, and subway environments, and their health and ecological risks. Department of Earth Sciences, IISER Kolkata. Led by Dr. Debananda Roy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-blobs" aria-hidden="true">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+  <span class="blob b4"></span>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav id="nav" class="glass">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">AQ</span>
+      <span class="brand-name">AQAR Lab</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<header id="top" class="hero">
+
+  <!-- Live AQI widget -->
+  <div class="aqi-widget glass" id="aqiWidget" aria-live="polite">
+    <button class="aqi-refresh" id="aqiRefresh" title="Refresh reading" aria-label="Refresh AQI reading">⟳</button>
+    <div class="aqi-head">
+      <span class="aqi-live-dot" id="aqiDot"></span>
+      <span class="aqi-label">Live AQI</span>
+    </div>
+    <div class="aqi-main">
+      <span class="aqi-value" id="aqiValue">--</span>
+      <span class="aqi-category" id="aqiCategory">Locating…</span>
+    </div>
+    <p class="aqi-location" id="aqiLocation">Detecting your location…</p>
+    <div class="aqi-pollutants" id="aqiPollutants"></div>
+    <button class="aqi-locate" id="aqiLocate" hidden>Use my location</button>
+  </div>
+
+  <div class="hero-inner">
+    <p class="eyebrow">Department of Earth Sciences · IISER Kolkata</p>
+    <h1>AQAR Lab</h1>
+    <p class="hero-kicker">Air Quality and Aerosol Research</p>
+    <p class="hero-sub">We trace how air pollutants and aerosols move through indoor rooms, subway platforms, and transboundary air masses — and translate that into measurable risk for human health and ecosystems. From dispersion modeling to bioaerosol monitoring, our work spans the full path from source to exposure.</p>
+    <div class="hero-actions">
+      <a href="#research" class="btn btn-primary">View our research</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+    <ul class="hero-meta">
+      <li><span>Institute</span>IISER Kolkata</li>
+      <li><span>Department</span>Earth Sciences</li>
+      <li><span>Principal Investigator</span>Dr. Debananda Roy</li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ RESEARCH AREAS ============ -->
+  <section id="research" class="section">
+    <div class="section-head">
+      <p class="eyebrow">Research</p>
+      <h2>What we work on</h2>
+      <p class="section-lede">Ten connected lines of work, from modeling how pollutants disperse to assessing what they cost human health and the environment.</p>
+    </div>
+    <div class="research-grid">
+
+      <article class="research-card glass">
+        <p class="code">APM</p>
+        <h3>Air Pollution Modeling</h3>
+        <p>Dispersion and receptor modeling of air pollutants across urban and regional scales.</p>
+      </article>
+
+      <article class="research-card glass">
+        <p class="code">AQAC</p>
+        <h3>Indoor &amp; Outdoor Air Quality</h3>
+        <p>Assessment and characterization of air quality across indoor and outdoor environments.</p>
+      </article>
+
+      <article class="research-card glass">
+        <p class="code">NTAP</p>
+        <h3>Transboundary Air Pollutants</h3>
+        <p>Natural and transboundary air pollutants and their long-range atmospheric transport.</p>
+      </article>
+
+      <article class="research-card glass">
+        <p class="code">EAP</p>
+        <h3>Emerging Air Pollutants</h3>
+        <p>Airborne microplastics and black carbon as emerging contaminants of concern.</p>
+      </article>
+
+      <article class="research-card glass">
+        <p class="code">SUBWAY</p>
+        <h3>Subway Air Quality</h3>
+        <p>Air quality in underground subway transportation systems.</p>
+      </article>
+
+      <article class="research-card glass">
+        <p class="code">HHR</p>
+        <h3>Human Health Risks</h3>
+        <p>Health risks in subway systems and indoor houses from pollutant exposure.</p>
+      </article>
+
+      <article class="research-card glass">
+        <p class="code">BIO&#8209;QMRA</p>
+        <h3>Bioaerosol Monitoring</h3>
+        <p>Bioaerosol monitoring and quantitative microbial risk assessment (probability of infection).</p>
+      </article>
+
+      <article class="research-card glass">
+        <p class="code">HRT</p>
+        <h3>Health Risk Models</h3>
+        <p>Mass deposition and exposure pathway modeling for human respiratory tracts.</p>
+      </article>
+
+      <article class="research-card glass">
+        <p class="code">ERA</p>
+        <h3>Ecological Risk Assessment</h3>
+        <p>Assessing pollutant risk to ecosystems, beyond human health impacts alone.</p>
+      </article>
+
+      <article class="research-card glass">
+        <p class="code">W2SP</p>
+        <h3>Waste to Sustainable Product</h3>
+        <p>Solid waste management pathways that convert waste into sustainable products.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ PUBLICATIONS ============ -->
+  <section id="publications" class="section">
+    <div class="section-head">
+      <p class="eyebrow">Selected output</p>
+      <h2>Publications</h2>
+      <p class="section-lede">[Add the lab's publication list here — title, authors, and journal for each entry.]</p>
+    </div>
+    <ul class="pub-list glass">
+      <li>
+        <p class="pub-year">[Year]</p>
+        <div class="pub-body">
+          <h3>[Publication title]</h3>
+          <p class="pub-meta">[Authors] — <em>[Journal / Conference]</em></p>
+        </div>
+      </li>
+      <li>
+        <p class="pub-year">[Year]</p>
+        <div class="pub-body">
+          <h3>[Publication title]</h3>
+          <p class="pub-meta">[Authors] — <em>[Journal / Conference]</em></p>
+        </div>
+      </li>
+      <li>
+        <p class="pub-year">[Year]</p>
+        <div class="pub-body">
+          <h3>[Publication title]</h3>
+          <p class="pub-meta">[Authors] — <em>[Journal / Conference]</em></p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ TEAM ============ -->
+  <section id="team" class="section">
+    <div class="section-head">
+      <p class="eyebrow">People</p>
+      <h2>Team</h2>
+    </div>
+    <div class="team-grid">
+
+      <article class="team-card glass pi-card">
+        <div class="team-photo" style="--hue:200;"></div>
+        <h3>Dr. Debananda Roy</h3>
+        <p class="team-role">Principal Investigator</p>
+        <p class="team-bio">Department of Earth Sciences, IISER Kolkata. Leads AQAR Lab's work across air quality modeling, aerosol characterization, and health risk assessment.</p>
+      </article>
+
+      <article class="team-card glass">
+        <div class="team-photo" style="--hue:170;"></div>
+        <h3>[Name]</h3>
+        <p class="team-role">Postdoctoral Researcher</p>
+        <p class="team-bio">[One sentence on research focus.]</p>
+      </article>
+
+      <article class="team-card glass">
+        <div class="team-photo" style="--hue:230;"></div>
+        <h3>[Name]</h3>
+        <p class="team-role">PhD Candidate</p>
+        <p class="team-bio">[One sentence on research focus.]</p>
+      </article>
+
+      <article class="team-card glass">
+        <div class="team-photo" style="--hue:20;"></div>
+        <h3>[Name]</h3>
+        <p class="team-role">PhD Candidate</p>
+        <p class="team-bio">[One sentence on research focus.]</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ NEWS ============ -->
+  <section id="news" class="section">
+    <div class="section-head">
+      <p class="eyebrow">Updates</p>
+      <h2>News</h2>
+    </div>
+    <ul class="news-list glass">
+      <li>
+        <p class="news-date">[Month Year]</p>
+        <div class="news-body">
+          <h3>[Headline]</h3>
+          <p>[One sentence of context.]</p>
+        </div>
+      </li>
+      <li>
+        <p class="news-date">[Month Year]</p>
+        <div class="news-body">
+          <h3>[Headline]</h3>
+          <p>[One sentence of context.]</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section section-cta">
+    <div class="cta-inner glass">
+      <p class="eyebrow">Get involved</p>
+      <h2>Prospective students and collaborators, we'd like to hear from you.</h2>
+      <p class="section-lede">[Note on open positions, visiting scholar placements, or collaboration proposals.]</p>
+      <div class="hero-actions">
+        <a href="mailto:contact@aqar-iiserkol.example.edu" class="btn btn-primary">contact@aqar-iiserkol.example.edu</a>
+        <a href="#top" class="btn btn-ghost">Back to top</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>AQAR Lab · Department of Earth Sciences · IISER Kolkata</p>
+  <p class="footer-fine">Live AQI data via Open‑Meteo. Publications, team, and news are placeholders — replace before publishing.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
