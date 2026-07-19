@@ -1,446 +1,382 @@
 /* =========================================
-   AAQR LAB - Main JavaScript
+   AQAR LAB — Main JavaScript
    ========================================= */
 
-// ===== DOM READY =====
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
     initHamburger();
-    initParticles();
     initScrollReveal();
     initCounters();
+    initLiveAir();
     initPublicationFilter();
     initContactForm();
     initBackToTop();
     initActiveNav();
-    initBarAnimations();
+    document.getElementById('year').textContent = new Date().getFullYear();
 });
 
-/* ===== NAVBAR SCROLL ===== */
+/* ===== NAVBAR SHADOW ON SCROLL ===== */
 function initNavbar() {
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 60) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+    const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 }
 
-/* ===== HAMBURGER MENU ===== */
+/* ===== MOBILE MENU ===== */
 function initHamburger() {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
 
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('open');
-        document.body.style.overflow =
-            navMenu.classList.contains('open') ? 'hidden' : '';
     });
 
-    navLinks.forEach(link => {
+    navMenu.querySelectorAll('a').forEach(link =>
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('open');
-            document.body.style.overflow = '';
-        });
-    });
+        })
+    );
 }
 
-/* ===== PARTICLES ===== */
-function initParticles() {
-    const container = document.getElementById('particles');
-    if (!container) return;
-
-    const colors = [
-        'rgba(26, 111, 196, 0.6)',
-        'rgba(0, 180, 216, 0.5)',
-        'rgba(72, 202, 228, 0.4)',
-        'rgba(255, 255, 255, 0.2)'
-    ];
-
-    const sizes = [3, 4, 5, 6, 8, 10];
-
-    function createParticle() {
-        const p = document.createElement('div');
-        p.classList.add('particle');
-
-        const size = sizes[Math.floor(Math.random() * sizes.length)];
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        const left = Math.random() * 100;
-        const duration = 8 + Math.random() * 15;
-        const delay = Math.random() * 10;
-        const drift = (Math.random() - 0.5) * 200;
-
-        p.style.cssText = `
-            width: ${size}px;
-            height: ${size}px;
-            background: ${color};
-            left: ${left}%;
-            bottom: -10px;
-            animation-duration: ${duration}s;
-            animation-delay: ${delay}s;
-            --drift: ${drift}px;
-        `;
-
-        container.appendChild(p);
-
-        setTimeout(() => {
-            p.remove();
-        }, (duration + delay) * 1000);
-    }
-
-    // Initial burst
-    for (let i = 0; i < 30; i++) {
-        createParticle();
-    }
-
-    // Continuous creation
-    setInterval(() => {
-        if (document.querySelectorAll('.particle').length < 50) {
-            createParticle();
-        }
-    }, 400);
-}
-
-/* ===== SCROLL REVEAL ===== */
+/* ===== SCROLL REVEAL (staggered per row) ===== */
 function initScrollReveal() {
-    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const els = document.querySelectorAll(
+        '.section-head, .r-card, .m-card, .pi-card, .pub-card, .f-card, .n-card, .tile, .feature-list li, .contact-info, .contact-form-wrap, .about-visual, .about-text, .group-title, .pub-filter, .center-btn'
+    );
+    els.forEach(el => el.classList.add('reveal'));
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-                const delay = entry.target.dataset.delay || 0;
-                setTimeout(() => {
-                    entry.target.classList.add('revealed');
-                }, delay);
-                observer.unobserve(entry.target);
-            }
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const siblings = [...entry.target.parentElement.children].filter(c => c.classList.contains('reveal'));
+            const idx = siblings.indexOf(entry.target);
+            entry.target.style.transitionDelay = `${Math.max(idx, 0) * 70}ms`;
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-    revealEls.forEach((el, i) => {
-        if (!el.dataset.delay) {
-            el.dataset.delay = (i % 4) * 100;
-        }
-        observer.observe(el);
-    });
+    els.forEach(el => observer.observe(el));
 }
 
 /* ===== COUNTERS ===== */
 function initCounters() {
     const counters = document.querySelectorAll('[data-count]');
-
-    const counterObserver = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                counterObserver.unobserve(entry.target);
-            }
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const target = parseInt(el.dataset.count, 10);
+            const start = performance.now();
+            const duration = 1800;
+            const tick = now => {
+                const p = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(eased * target);
+                if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+            observer.unobserve(el);
         });
-    }, { threshold: 0.5 });
-
-    counters.forEach(counter => counterObserver.observe(counter));
+    }, { threshold: 0.6 });
+    counters.forEach(c => observer.observe(c));
 }
 
-function animateCounter(el) {
-    const target = parseInt(el.dataset.count);
-    const suffix = el.dataset.suffix || '';
-    const duration = 2000;
-    const steps = 60;
-    const increment = target / steps;
-    let current = 0;
+/* ============================================================
+   LIVE AIR QUALITY WIDGET
+   Location via browser geolocation (fallback: default city),
+   real-time data from the free Open-Meteo Air Quality API.
+   ============================================================ */
 
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            current = target;
-            clearInterval(timer);
+// TODO: set your lab's city as the fallback for visitors who deny location access
+const DEFAULT_LOCATION = { name: 'Kolkata', lat: 22.5726, lon: 88.3630 };
+
+function initLiveAir() {
+    locateAndLoad();
+    setInterval(locateAndLoad, 10 * 60 * 1000); // refresh every 10 minutes
+}
+
+async function locateAndLoad() {
+    const loc = await getLocation();
+    const name = loc.named ? loc.name : await reverseGeocode(loc.lat, loc.lon);
+    document.getElementById('stationName').textContent = name;
+    await Promise.all([loadAirQuality(loc.lat, loc.lon), loadUV(loc.lat, loc.lon)]);
+}
+
+/* Browser geolocation with graceful fallback.
+   Note: geolocation requires HTTPS (or localhost) — on plain http or
+   file:// the fallback city is used automatically. */
+function getLocation() {
+    return new Promise(resolve => {
+        if (!('geolocation' in navigator)) {
+            return resolve({ ...DEFAULT_LOCATION, named: true });
         }
-        el.textContent = Math.floor(current) + suffix;
-    }, duration / steps);
+        navigator.geolocation.getCurrentPosition(
+            pos => resolve({
+                lat: +pos.coords.latitude.toFixed(4),
+                lon: +pos.coords.longitude.toFixed(4),
+                named: false
+            }),
+            () => resolve({ ...DEFAULT_LOCATION, named: true }),
+            { timeout: 7000, maximumAge: 10 * 60 * 1000 }
+        );
+    });
+}
+
+/* Turn coordinates into a readable place name (free, no key) */
+async function reverseGeocode(lat, lon) {
+    try {
+        const res = await fetch(
+            `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
+        );
+        const d = await res.json();
+        return d.city || d.locality || d.principalSubdivision || formatCoords(lat, lon);
+    } catch {
+        return formatCoords(lat, lon);
+    }
+}
+
+const formatCoords = (lat, lon) =>
+    `${Math.abs(lat).toFixed(2)}°${lat >= 0 ? 'N' : 'S'}, ${Math.abs(lon).toFixed(2)}°${lon >= 0 ? 'E' : 'W'}`;
+
+/* Fetch real-time pollutants + US AQI */
+async function loadAirQuality(lat, lon) {
+    try {
+        const url = 'https://air-quality-api.open-meteo.com/v1/air-quality' +
+            `?latitude=${lat}&longitude=${lon}` +
+            '&current=us_aqi,pm2_5,pm10,nitrogen_dioxide,ozone';
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(res.status);
+        const data = await res.json();
+        renderAQ(data.current);
+        setFoot('Live data · Open-Meteo Air Quality API');
+    } catch {
+        setFoot('Live data unavailable — check your connection');
+    }
+}
+
+/* Fetch real-time UV index for the floating chip */
+async function loadUV(lat, lon) {
+    try {
+        const res = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=uv_index`
+        );
+        const data = await res.json();
+        const uv = data.current?.uv_index;
+        document.getElementById('chipUV').textContent =
+            uv == null ? 'UV index · --' : `UV index · ${uv.toFixed(1)}`;
+    } catch {
+        /* keep placeholder text */
+    }
+}
+
+function renderAQ(c) {
+    // AQI number + category chip
+    const aqi = c.us_aqi;
+    document.getElementById('aqiNum').textContent = aqi == null ? '--' : Math.round(aqi);
+    const cat = aqiCategory(aqi);
+    const chip = document.getElementById('statusChip');
+    chip.className = `status-chip ${cat.cls}`;
+    chip.innerHTML = `<i class="fas fa-circle-check"></i> <span>${cat.label}</span>`;
+
+    // Pollutant bars — [scale max, good-max, moderate-max]
+    setBar('barPM25', 'valPM25', c.pm2_5, 150, 35.4, 55.4);
+    setBar('barPM10', 'valPM10', c.pm10, 250, 54, 154);
+    setBar('barNO2', 'valNO2', c.nitrogen_dioxide, 200, 60, 110);
+    setBar('barO3', 'valO3', c.ozone, 240, 100, 160);
+
+    // Floating PM2.5 chip
+    document.getElementById('chipPM').textContent =
+        c.pm2_5 == null ? 'PM2.5 · --' : `PM2.5 · ${Math.round(c.pm2_5)} µg/m³`;
+
+    // Timestamp of the reading
+    const t = c.time ? new Date(c.time) : new Date();
+    document.getElementById('lastUpdate').textContent =
+        t.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+/* US AQI → category label + color class */
+function aqiCategory(aqi) {
+    if (aqi == null) return { cls: 'loading', label: 'No data' };
+    if (aqi <= 50) return { cls: 'good', label: 'Good' };
+    if (aqi <= 100) return { cls: 'moderate', label: 'Moderate' };
+    if (aqi <= 150) return { cls: 'usg', label: 'Unhealthy (SG)' };
+    if (aqi <= 200) return { cls: 'unhealthy', label: 'Unhealthy' };
+    if (aqi <= 300) return { cls: 'very', label: 'Very Unhealthy' };
+    return { cls: 'hazardous', label: 'Hazardous' };
+}
+
+/* Animate one pollutant bar + color it by severity */
+function setBar(barId, valId, value, scaleMax, goodMax, modMax) {
+    const bar = document.getElementById(barId);
+    const valEl = document.getElementById(valId);
+    if (value == null) { valEl.textContent = '--'; return; }
+    const pct = Math.min(Math.max((value / scaleMax) * 100, 3), 100);
+    const cls = value <= goodMax ? 'good' : value <= modMax ? 'moderate' : 'poor';
+    bar.className = `db-fill ${cls}`;
+    bar.style.width = pct + '%';
+    valEl.textContent = Math.round(value);
+}
+
+function setFoot(text) {
+    document.getElementById('dashFoot').textContent = text;
 }
 
 /* ===== PUBLICATION FILTER ===== */
 function initPublicationFilter() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const pubItems = document.querySelectorAll('.pub-item');
+    const pills = document.querySelectorAll('.filter-pill');
+    const items = document.querySelectorAll('.pub-card');
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Update active button
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            pills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            const filter = pill.dataset.filter;
 
-            const filter = btn.dataset.filter;
-
-            pubItems.forEach(item => {
-                if (filter === 'all' || item.dataset.type === filter) {
+            items.forEach(item => {
+                const show = filter === 'all' || item.dataset.type === filter;
+                if (show) {
                     item.style.display = 'grid';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateX(0)';
-                    }, 50);
+                    requestAnimationFrame(() => { item.style.opacity = '1'; item.style.transform = 'translateX(0)'; });
                 } else {
                     item.style.opacity = '0';
-                    item.style.transform = 'translateX(-20px)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
+                    item.style.transform = 'translateX(-14px)';
+                    setTimeout(() => { item.style.display = 'none'; }, 280);
                 }
             });
         });
     });
 }
 
-/* ===== CONTACT FORM ===== */
+/* ===== CONTACT FORM + CONFETTI + TOAST ===== */
 function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
 
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', async e => {
         e.preventDefault();
-
-        const btn = form.querySelector('.form-submit');
+        const btn = form.querySelector('.btn');
         const btnText = btn.querySelector('.btn-text');
-        const btnIcon = btn.querySelector('i');
+        const btnIcon = btn.querySelector('.btn-ico');
 
-        // Loading state
         btn.disabled = true;
-        btnText.textContent = 'Sending...';
-        btnIcon.className = 'fas fa-spinner fa-spin';
+        btnText.textContent = 'Sending…';
+        btnIcon.className = 'fas fa-spinner fa-spin btn-ico';
 
-        // Simulate sending (replace with actual API call)
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        // Simulated send — replace with your real backend / form service
+        await new Promise(r => setTimeout(r, 1500));
 
-        // Success state
-        btnText.textContent = 'Message Sent!';
-        btnIcon.className = 'fas fa-check';
+        btnText.textContent = 'Message Sent';
+        btnIcon.className = 'fas fa-check btn-ico';
         btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        btn.style.boxShadow = '0 8px 22px rgba(16, 185, 129, 0.35)';
+        launchConfetti();
+        showToast("Your message has been sent — we'll get back to you soon.");
 
-        showNotification('Your message has been sent successfully! We\'ll get back to you soon.', 'success');
-
-        // Reset after delay
         setTimeout(() => {
             form.reset();
             btn.disabled = false;
             btnText.textContent = 'Send Message';
-            btnIcon.className = 'fas fa-paper-plane';
+            btnIcon.className = 'fas fa-paper-plane btn-ico';
             btn.style.background = '';
-        }, 3000);
+            btn.style.boxShadow = '';
+        }, 3200);
     });
 }
 
-/* ===== NOTIFICATION TOAST ===== */
-function showNotification(message, type = 'success') {
-    // Remove existing
-    const existing = document.querySelector('.notification-toast');
-    if (existing) existing.remove();
+/* Soft confetti — a small celebratory touch */
+function launchConfetti() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const colors = ['#0ea5e9', '#14b8a6', '#f59e0b', '#f43f5e', '#8b5cf6', '#10b981'];
+    const container = document.createElement('div');
+    container.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:10000;overflow:hidden;';
+    document.body.appendChild(container);
+
+    for (let i = 0; i < 46; i++) {
+        const piece = document.createElement('span');
+        const size = 5 + Math.random() * 6;
+        const left = 55 + Math.random() * 40;           // burst near the form (right side)
+        const drift = (Math.random() - 0.5) * 320;
+        const duration = 1400 + Math.random() * 1200;
+        const delay = Math.random() * 250;
+
+        piece.style.cssText = `
+            position:absolute;
+            top:58vh; left:${left}vw;
+            width:${size}px; height:${size * 1.5}px;
+            background:${colors[i % colors.length]};
+            border-radius:${Math.random() > 0.5 ? '50%' : '2px'};
+            opacity:0.95;
+        `;
+        container.appendChild(piece);
+
+        piece.animate(
+            [
+                { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
+                { transform: `translate(${drift}px, ${30 + Math.random() * 30}vh) rotate(${420 + Math.random() * 360}deg)`, opacity: 0 }
+            ],
+            { duration, delay, easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)', fill: 'both' }
+        ).onfinish = () => piece.remove();
+    }
+
+    setTimeout(() => container.remove(), 3200);
+}
+
+function showToast(message) {
+    const old = document.querySelector('.toast');
+    if (old) old.remove();
 
     const toast = document.createElement('div');
-    toast.className = 'notification-toast';
-
-    const icons = { success: 'check-circle', error: 'times-circle', info: 'info-circle' };
-    const colors = {
-        success: 'rgba(16, 185, 129, 0.15)',
-        error: 'rgba(239, 68, 68, 0.15)',
-        info: 'rgba(26, 111, 196, 0.15)'
-    };
-    const borderColors = {
-        success: 'rgba(16, 185, 129, 0.4)',
-        error: 'rgba(239, 68, 68, 0.4)',
-        info: 'rgba(26, 111, 196, 0.4)'
-    };
-
+    toast.className = 'toast';
+    toast.innerHTML = `<i class="fas fa-check-circle"></i><span>${message}</span>`;
     toast.style.cssText = `
-        position: fixed;
-        bottom: 100px;
-        right: 30px;
-        z-index: 9999;
-        background: ${colors[type]};
-        border: 1px solid ${borderColors[type]};
-        backdrop-filter: blur(20px);
-        padding: 16px 24px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: #fff;
-        font-size: 0.9rem;
-        font-family: 'Inter', sans-serif;
-        max-width: 360px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        transform: translateX(120%);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: fixed; bottom: 96px; right: 28px; z-index: 10001;
+        display: flex; align-items: center; gap: 11px;
+        background: #10233f; color: #fff;
+        font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.88rem;
+        border-radius: 14px;
+        padding: 15px 22px; max-width: 340px;
+        box-shadow: 0 16px 44px rgba(16, 35, 63, 0.4);
+        transform: translateX(140%);
+        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     `;
-
-    toast.innerHTML = `
-        <i class="fas fa-${icons[type]}" style="font-size: 1.2rem; color: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#4a9edd'};"></i>
-        <span>${message}</span>
-    `;
-
+    toast.querySelector('i').style.color = '#34d399';
     document.body.appendChild(toast);
-
-    requestAnimationFrame(() => {
-        toast.style.transform = 'translateX(0)';
-    });
-
+    requestAnimationFrame(() => { toast.style.transform = 'translateX(0)'; });
     setTimeout(() => {
-        toast.style.transform = 'translateX(120%)';
-        setTimeout(() => toast.remove(), 400);
-    }, 4000);
+        toast.style.transform = 'translateX(140%)';
+        setTimeout(() => toast.remove(), 450);
+    }, 4200);
 }
 
 /* ===== BACK TO TOP ===== */
 function initBackToTop() {
     const btn = document.getElementById('back-top');
     if (!btn) return;
-
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) {
-            btn.classList.add('visible');
-        } else {
-            btn.classList.remove('visible');
-        }
-    });
-
-    btn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+        btn.classList.toggle('visible', window.scrollY > 450);
+    }, { passive: true });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
-/* ===== ACTIVE NAV LINK ===== */
+/* ===== ACTIVE NAV (scrollspy) ===== */
 function initActiveNav() {
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const links = document.querySelectorAll('.nav-link');
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${entry.target.id}`) {
-                        link.classList.add('active');
-                    }
-                });
+                links.forEach(link =>
+                    link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`)
+                );
             }
         });
-    }, {
-        threshold: 0.4,
-        rootMargin: '-80px 0px -50% 0px'
-    });
+    }, { threshold: 0.25, rootMargin: '-90px 0px -55% 0px' });
 
-    sections.forEach(section => observer.observe(section));
-}
-
-/* ===== BAR ANIMATIONS ===== */
-function initBarAnimations() {
-    const bars = document.querySelectorAll('.bar-fill');
-
-    const barObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const width = entry.target.dataset.width;
-                entry.target.style.setProperty('--fill-width', width);
-                entry.target.style.width = width;
-                barObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    bars.forEach(bar => barObserver.observe(bar));
-}
-
-/* ===== SMOOTH HOVER TILT ===== */
-document.querySelectorAll('.research-card, .member-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = (y - centerY) / centerY * -5;
-        const rotateY = (x - centerX) / centerX * 5;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-    });
-});
-
-/* ===== TYPING EFFECT (optional hero subtitle) ===== */
-function typeEffect(el, texts, speed = 80) {
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    function type() {
-        const currentText = texts[textIndex];
-
-        if (isDeleting) {
-            el.textContent = currentText.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            el.textContent = currentText.substring(0, charIndex + 1);
-            charIndex++;
-        }
-
-        let delay = isDeleting ? speed / 2 : speed;
-
-        if (!isDeleting && charIndex === currentText.length) {
-            delay = 2000;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-            delay = 500;
-        }
-
-        setTimeout(type, delay);
-    }
-
-    type();
-}
-
-// Initialize typing effect if element exists
-const typingEl = document.getElementById('typing-text');
-if (typingEl) {
-    typeEffect(typingEl, [
-        'Air Quality Research',
-        'Aerosol Science',
-        'Environmental Monitoring',
-        'Clean Air Solutions'
-    ]);
-}
-
-/* ===== PARALLAX HERO ===== */
-window.addEventListener('scroll', () => {
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
-    const scrolled = window.scrollY;
-    if (scrolled < window.innerHeight) {
-        const circles = document.querySelectorAll('.hero-bg-circle');
-        circles.forEach((circle, i) => {
-            const speed = 0.3 + i * 0.1;
-            circle.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    }
-});
-
-/* ===== NEWSLETTER (if added) ===== */
-const newsletterForm = document.getElementById('newsletter-form');
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        showNotification('Thank you for subscribing to our newsletter!', 'success');
-        newsletterForm.reset();
-    });
+    sections.forEach(s => observer.observe(s));
 }
