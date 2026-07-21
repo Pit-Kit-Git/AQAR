@@ -115,6 +115,11 @@ window.SITE_CONFIG = {
     shashi:    { name: "Shashi Ranjan Singh",  linkedin: "", email: "" },
     pritam:    { name: "Pritam Konai",         linkedin: "", email: "" },
     dheeraj:   { name: "Dheeraj Kumar Mandal", linkedin: "", email: "" },
-    kaoshikii: { name: "Kaoshikii Sinha",      linkedin: "", email: "" }
+    kaoshikii: { name: "Kaoshikii Sinha",      linkedin: "", email: "" },
+    subhankar: { name: "Subhankar Gharui",     linkedin: "", email: "" },
+    shubham:   { name: "Shubham Mishra",       linkedin: "", email: "" },
+    tanveen:   { name: "Tanveen Nayad Islam",  linkedin: "", email: "" },
+    asmit:     { name: "Asmit Gupta",          linkedin: "", email: "" },
+    rahul:     { name: "Rahul Ranjan",         linkedin: "", email: "" }
   }
 };
