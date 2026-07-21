@@ -110,16 +110,16 @@ window.SITE_CONFIG = {
   // MEMBERS: paste each person's LinkedIn and email here; the site updates automatically.
   // Email buttons open a Gmail compose window. Leave a value as "" to keep the icon placeholder.
   members: {
-    aashish:   { name: "Aashish Kumar",        linkedin: "https://in.linkedin.com/in/aashish-kumar-933a4516a", email: "" },
-    aviyank:   { name: "Aviyank Aryan",        linkedin: "https://in.linkedin.com/in/aviyank-aryan-67a520207", email: "" },
-    shashi:    { name: "Shashi Ranjan Singh",  linkedin: "https://in.linkedin.com/in/shashi-ranjan-singh-bbb964251", email: "" },
-    pritam:    { name: "Pritam Konai",         linkedin: "https://in.linkedin.com/in/pritam-konai-a46a74293", email: "" },
-    dheeraj:   { name: "Dheeraj Kumar Mandal", linkedin: "https://in.linkedin.com/in/dheeraj-kumar-mandal-b976b5229", email: "" },
-    kaoshikii: { name: "Kaoshikii Sinha",      linkedin: "https://in.linkedin.com/in/kaoshikii-sinha-78613937b", email: "" },
-    subhankar: { name: "Subhankar Gharui",     linkedin: "https://in.linkedin.com/in/subhankar-gharui-56669934a", email: "" },
-    shubham:   { name: "Shubham Mishra",       linkedin: "https://in.linkedin.com/in/shubham-mishra-162b18254", email: "" },
-    tanveen:   { name: "Tanveen Nayad Islam",  linkedin: "https://in.linkedin.com/in/tanveen-nayad-366963182", email: "" },
-    asmit:     { name: "Asmit Gupta",          linkedin: "https://in.linkedin.com/in/asmit-gupta-45851a271", email: "" },
-    rahul:     { name: "Rahul Ranjan",         linkedin: "https://in.linkedin.com/in/rahul-ranjan022", email: "" }
+    aashish:   { name: "Aashish Kumar",        linkedin: "https://in.linkedin.com/in/aashish-kumar-933a4516a", email: "ak25rs078@iiserkol.ac.in" },
+    aviyank:   { name: "Aviyank Aryan",        linkedin: "https://in.linkedin.com/in/aviyank-aryan-67a520207", email: "aa22ms030@iiserkol.ac.in" },
+    shashi:    { name: "Shashi Ranjan Singh",  linkedin: "https://in.linkedin.com/in/shashi-ranjan-singh-bbb964251", email: "srs22ms084@iiserkol.ac.in" },
+    pritam:    { name: "Pritam Konai",         linkedin: "https://in.linkedin.com/in/pritam-konai-a46a74293", email: "pk23ms182@iiserkol.ac.in" },
+    dheeraj:   { name: "Dheeraj Kumar Mandal", linkedin: "https://in.linkedin.com/in/dheeraj-kumar-mandal-b976b5229", email: "dkm25ip003@iiserkol.ac.in" },
+    kaoshikii: { name: "Kaoshikii Sinha",      linkedin: "https://in.linkedin.com/in/kaoshikii-sinha-78613937b", email: "ks25mp009@iiserkol.ac.in" },
+    subhankar: { name: "Subhankar Gharui",     linkedin: "https://in.linkedin.com/in/subhankar-gharui-56669934a", email: "sg25mp027@iiserkol.ac.in" },
+    shubham:   { name: "Shubham Mishra",       linkedin: "https://in.linkedin.com/in/shubham-mishra-162b18254", email: "sm25mp047@iiserkol.ac.in" },
+    tanveen:   { name: "Tanveen Nayad Islam",  linkedin: "https://in.linkedin.com/in/tanveen-nayad-366963182", email: "tni25mp032@iiserkol.ac.in" },
+    asmit:     { name: "Asmit Gupta",          linkedin: "https://in.linkedin.com/in/asmit-gupta-45851a271", email: "ag22ms225@iiserkol.ac.in" },
+    rahul:     { name: "Rahul Ranjan",         linkedin: "https://in.linkedin.com/in/rahul-ranjan022", email: "rr25mp020@iiserkol.ac.in" }
   }
 };
