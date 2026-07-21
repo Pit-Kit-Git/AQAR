@@ -21,7 +21,11 @@ window.SITE_CONFIG = {
     photo: "images/sir.png",
     email: "debanandaroy@iiserkol.ac.in",
     linkedin: "https://www.linkedin.com/in/debananda-roy-56582a26",
-    scholar: "https://scholar.google.com/citations?user=OiG1xgsAAAAJ&hl=en"
+    scholar: "https://scholar.google.com/citations?user=OiG1xgsAAAAJ&hl=en",
+    // Live publication count: leave publicationCount "" to fetch it live (Semantic Scholar).
+    // Google Scholar blocks live browser reads, so set an exact number here to override.
+    scholarAuthorId: "14198324",
+    publicationCount: "42"
   },
 
   // Each paper auto-appears in Publications + the hero Highlights + the popup.
