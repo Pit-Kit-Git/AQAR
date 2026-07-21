@@ -1,2 +1,0 @@
-# AQAR
-Official Lab Webpage
