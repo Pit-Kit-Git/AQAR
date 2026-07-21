@@ -1530,3 +1530,25 @@ a.f-card { text-decoration: none; color: inherit; display: flex; flex-direction:
 .collab-logo:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 .collab-logo img { max-height: 48px; max-width: 116px; width: auto; object-fit: contain; }
 .collab-fallback { display: none; font-size: .68rem; font-weight: 700; color: var(--ink-soft); text-align: center; line-height: 1.2; }
+
+/* ---- facility instrument photos (extracted from INSTRUMENTS.pdf / CIF.pdf) ---- */
+.f-media {
+    height: 150px;
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 0 0 18px;
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    display: grid;
+    place-items: center;
+}
+.f-media .f-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #fbfdff;
+    display: block;
+    padding: 6px;
+    box-sizing: border-box;
+}
+.f-card.cif .f-media { background: #ecfdf8; border-color: rgba(20,184,166,.3); }
