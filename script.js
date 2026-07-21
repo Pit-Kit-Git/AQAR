@@ -200,6 +200,7 @@ function initScrollUI() {
   const navbar = document.getElementById('navbar');
   const navAqi = document.getElementById('navAqi');
   const backTop = document.getElementById('backTop');
+  if (backTop) backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   const hero = document.getElementById('home');
   const links = [...document.querySelectorAll('.nav-link')];
   const sections = links.map((l) => document.querySelector(l.getAttribute('href'))).filter(Boolean);
