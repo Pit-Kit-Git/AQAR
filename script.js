@@ -381,6 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLiveAir();
   initPubFilter();
   initContactForm();
+  initLightbox();
   const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
 });
 
@@ -397,4 +398,53 @@ async function initPubCount() {
     const d = await res.json();
     if (d && typeof d.paperCount === 'number') el.textContent = d.paperCount;
   } catch (e) { /* keep fallback set by applyConfig */ }
+}
+
+/* ============================================================
+   LIGHTBOX  -  click any gallery / instrument photo to view full size
+   ============================================================ */
+function initLightbox() {
+  let lb = document.getElementById('lightbox');
+  if (!lb) {
+    lb = document.createElement('div');
+    lb.id = 'lightbox';
+    lb.className = 'lightbox';
+    lb.setAttribute('aria-hidden', 'true');
+    lb.innerHTML =
+      '<button class="lb-close" aria-label="Close photo">&times;</button>' +
+      '<figure class="lb-fig"><img class="lb-img" alt=""><figcaption class="lb-cap"></figcaption></figure>';
+    document.body.appendChild(lb);
+  }
+  const imgEl = lb.querySelector('.lb-img');
+  const capEl = lb.querySelector('.lb-cap');
+  const close = () => {
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    imgEl.removeAttribute('src');
+  };
+  const open = (src, alt) => {
+    imgEl.setAttribute('src', src);
+    imgEl.setAttribute('alt', alt || '');
+    capEl.textContent = alt || '';
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+  lb.addEventListener('click', (e) => {
+    if (e.target === lb || e.target.classList.contains('lb-close')) close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lb.classList.contains('open')) close();
+  });
+  document.querySelectorAll('.gb-card img, .f-media .f-img').forEach((im) => {
+    im.classList.add('zoomable');
+    im.addEventListener('click', () => {
+      const src = im.getAttribute('src');
+      if (!src || im.style.display === 'none') return;       // skip broken / hidden
+      const med = im.closest('.f-media');
+      if (med && med.style.display === 'none') return;        // facility image failed
+      open(src, im.getAttribute('alt'));
+    });
+  });
 }

@@ -110,16 +110,16 @@ window.SITE_CONFIG = {
   // MEMBERS: paste each person's LinkedIn and email here; the site updates automatically.
   // Email buttons open a Gmail compose window. Leave a value as "" to keep the icon placeholder.
   members: {
-    aashish:   { name: "Aashish Kumar",        linkedin: "", email: "" },
-    aviyank:   { name: "Aviyank Aryan",        linkedin: "", email: "" },
-    shashi:    { name: "Shashi Ranjan Singh",  linkedin: "", email: "" },
-    pritam:    { name: "Pritam Konai",         linkedin: "", email: "" },
-    dheeraj:   { name: "Dheeraj Kumar Mandal", linkedin: "", email: "" },
-    kaoshikii: { name: "Kaoshikii Sinha",      linkedin: "", email: "" },
-    subhankar: { name: "Subhankar Gharui",     linkedin: "", email: "" },
-    shubham:   { name: "Shubham Mishra",       linkedin: "", email: "" },
-    tanveen:   { name: "Tanveen Nayad Islam",  linkedin: "", email: "" },
-    asmit:     { name: "Asmit Gupta",          linkedin: "", email: "" },
-    rahul:     { name: "Rahul Ranjan",         linkedin: "", email: "" }
+    aashish:   { name: "Aashish Kumar",        linkedin: "https://in.linkedin.com/in/aashish-kumar-933a4516a", email: "" },
+    aviyank:   { name: "Aviyank Aryan",        linkedin: "https://in.linkedin.com/in/aviyank-aryan-67a520207", email: "" },
+    shashi:    { name: "Shashi Ranjan Singh",  linkedin: "https://in.linkedin.com/in/shashi-ranjan-singh-bbb964251", email: "" },
+    pritam:    { name: "Pritam Konai",         linkedin: "https://in.linkedin.com/in/pritam-konai-a46a74293", email: "" },
+    dheeraj:   { name: "Dheeraj Kumar Mandal", linkedin: "https://in.linkedin.com/in/dheeraj-kumar-mandal-b976b5229", email: "" },
+    kaoshikii: { name: "Kaoshikii Sinha",      linkedin: "https://in.linkedin.com/in/kaoshikii-sinha-78613937b", email: "" },
+    subhankar: { name: "Subhankar Gharui",     linkedin: "https://in.linkedin.com/in/subhankar-gharui-56669934a", email: "" },
+    shubham:   { name: "Shubham Mishra",       linkedin: "https://in.linkedin.com/in/shubham-mishra-162b18254", email: "" },
+    tanveen:   { name: "Tanveen Nayad Islam",  linkedin: "https://in.linkedin.com/in/tanveen-nayad-366963182", email: "" },
+    asmit:     { name: "Asmit Gupta",          linkedin: "https://in.linkedin.com/in/asmit-gupta-45851a271", email: "" },
+    rahul:     { name: "Rahul Ranjan",         linkedin: "https://in.linkedin.com/in/rahul-ranjan022", email: "" }
   }
 };
