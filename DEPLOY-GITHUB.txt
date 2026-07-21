@@ -1,0 +1,48 @@
+AQAR LAB WEBSITE  -  GitHub Pages deploy notes
+=================================================
+
+This folder is the COMPLETE, self-consistent site. The four files below MUST
+be deployed TOGETHER (the new index.html relies on the new style.css and the
+new script.js). Mixing a new index.html with an OLD style.css / script.js is
+exactly what makes the gallery look misplaced and "click to zoom" do nothing.
+
+THE WEBSITE (deploy all four):
+  index.html      the page
+  style.css       styling  (gallery layout + lightbox + instrument photos live here)
+  script.js       behaviour (the click-to-zoom lightbox lives here)
+  config.js       single source of truth (PI, members + LinkedIn, papers, pub count)
+
+IMAGES:
+  images/         drop your photos here (sir.png, member photos, collab logos,
+                  gallery-group.jpg, gallery-dept.jpg, ...). Instrument & CIF
+                  photos are already extracted and included. Missing files
+                  gracefully fall back to icons / text.
+
+OPTIONAL (local viewing only, NOT required on GitHub):
+  preview.html    a single self-contained file (CSS+JS inlined) that works when
+                  opened directly from disk or in chat previews.
+
+HOW TO FIX THE GITHUB VERSION (replace, don't merge):
+  1. In your GitHub repo, DELETE the old index.html, style.css, script.js and
+     config.js (and the old images/ files you want to refresh). The simplest
+     reliable method is to delete the old set entirely and upload this one.
+  2. Upload index.html, style.css, script.js, config.js to the SAME folder your
+     Pages "Source" uses (repo root, or /docs, or a /docs subfolder - whatever
+     currently serves your live site).
+  3. Upload the contents of images/ into the repo's images/ folder.
+  4. Commit the changes. GitHub Pages rebuilds in ~1-2 minutes.
+  5. HARD-REFRESH the live site (Ctrl/Cmd + Shift + R, or open in an incognito
+     window). The "?v=20260721" tag on the CSS/JS links also forces the browser
+     to fetch the fresh files instead of cached old ones.
+
+WHY ZOOM + GALLERY WERE BROKEN BEFORE:
+  The gallery's two-photo layout (.gallery-big) and the click-to-zoom lightbox
+  (.lightbox + initLightbox) were added in the NEW style.css and script.js. If
+  GitHub still served the OLD css/js, the gallery rendered with no layout and
+  there was no zoom code to run - even though index.html was new. Pushing the
+  matching css + js (this folder) fixes both at once.
+
+QUICK LOCAL CHECK BEFORE PUSHING:
+  Open preview.html in a browser; if zoom + gallery look right there, the same
+  four files (index.html/style.css/script.js/config.js) + images/ will look
+  identical on GitHub once uploaded together and hard-refreshed.
